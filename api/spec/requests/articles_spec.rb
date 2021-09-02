@@ -27,6 +27,7 @@ RSpec.describe ArticlesController do
           slug: article.slug
         )
       end
+    end
       # THE FOLLOWING BLOCK OF CODE WAS IMPROVED THROUGH THE AGGREGATE FAILURES BLOCK ABOVE
       # expect(json_data).to eq(
       #   [
@@ -42,6 +43,13 @@ RSpec.describe ArticlesController do
       #     }
       #   ]
       # )
+
+      it 'returns articles in the proper order' do
+        older_article = create(:article, created_at: 1.hour.ago)
+        recent_article = create(:article)
+        get '/articles'
+        ids = json_data.map { |item| item[:id].to_i }
+        expect(ids).to(eq([recent_article.id, older_article.id]))
     end
   end
 end
