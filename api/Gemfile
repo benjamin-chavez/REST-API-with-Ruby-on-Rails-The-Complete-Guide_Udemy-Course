@@ -44,3 +44,4 @@ end
 
 # CUSTOM GEMS
 gem 'jsonapi-serializer'
+gem 'jsom-pagination'
