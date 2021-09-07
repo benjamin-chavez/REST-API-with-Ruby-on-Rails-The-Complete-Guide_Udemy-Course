@@ -45,3 +45,4 @@ end
 # CUSTOM GEMS
 gem 'jsonapi-serializer'
 gem 'jsom-pagination'
+gem 'jsonapi_errors_handler'

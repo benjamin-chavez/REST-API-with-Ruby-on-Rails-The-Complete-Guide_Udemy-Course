@@ -22,13 +22,12 @@ class ArticlesController < ApplicationController
     # render json: serializer.new(paginated.items, options), status: :ok
   end
 
-  def serializer
-    ArticleSerializer
-  end
 
   def show
     @article = Article.find(params[:id])
     render json: serializer.new(@article)
+  # rescue ActiveRecord::RecordNotFound => e
+  #   render json: { message: e.message, details: "error message details here"}
   end
 
   # The following to method have been moved to the paginable.rb file
@@ -39,4 +38,8 @@ class ArticlesController < ApplicationController
   # def pagination_params
   #   params.permit![:page]
   # end
+
+  def serializer
+    ArticleSerializer
+  end
 end
