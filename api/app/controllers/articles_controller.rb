@@ -27,6 +27,8 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @article = Article.find(params[:id])
+    render json: serializer.new(@article)
   end
 
   # The following to method have been moved to the paginable.rb file
@@ -37,6 +39,4 @@ class ArticlesController < ApplicationController
   # def pagination_params
   #   params.permit![:page]
   # end
-  
-
 end
